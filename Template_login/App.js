@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, ImageBackground, TextInput, Image } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, TextInput, Image, TouchableOpacity, CheckBox } from 'react-native';
 import Constants from 'expo-constants';
 
 // You can import from local files
@@ -15,19 +15,20 @@ export default function App() {
   return (
     <View style={styles.container}>
     <ImageBackground source={image} style={styles.image} blurRadius={6}>
+      <View style={{flex:1}}>
         <Text style={styles.logo}>Your Logo</Text>
 
           <View style={styles.sectionStyle}>
           <Image
             source={{
               uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/input_username.png',
+                'http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png',
             }}
             style={styles.imageStyle}
           />
           <TextInput
             style={{flex: 1}}
-            placeholder="Enter Your Name Here"
+            placeholder="Username"
             underlineColorAndroid="transparent"
           />
         </View>
@@ -35,17 +36,32 @@ export default function App() {
           <Image
             source={{
               uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/input_phone.png',
+                'https://cdn.icon-icons.com/icons2/2440/PNG/512/lock_icon_148524.png',
             }}
             style={styles.imageStyle}
           />
           <TextInput
             style={{flex: 1}}
-            placeholder="Enter Your Mobile No Here"
+            placeholder="Password"
             underlineColorAndroid="transparent"
           />
         </View>
 
+        <TouchableOpacity style={styles.singinbtn}>
+        <Text style={styles.singintext}>Sing in</Text>
+      </TouchableOpacity>
+      <View style={styles.forgotpassword}>
+        <Text>Forgot Password</Text>
+        <Text><CheckBox
+          style={styles.checkbox}
+        />Remember Me</Text>
+      </View>
+            <Text style={styles.singinwith}>or sing in with</Text>
+            <TouchableOpacity style={styles.facebook}>
+            <Text style={styles.singintext}>Facebook</Text>
+            </TouchableOpacity>
+      </View>
+      <Text style={styles.createone}>dont have an account yet <Text style={styles.createoneaccount}>Creat one</Text></Text>
       </ImageBackground>
     </View>
   );
@@ -59,10 +75,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#ecf0f1',
     padding: 8,
   },
+
   logo: {
-    fontSize: 28,
+    fontSize: 38,
     fontWeight: 'bold',
     textAlign: 'center',
+    marginBottom: 160,
+    marginTop: 60,
   },
   
   image: {
@@ -71,17 +90,77 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  forgotpassword:{
+    flex: 0.1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+
+  createone:{
+    justifyContent: 'center',
+    alignSelf:'center',
+    fontSize: 16,
+    color: 'white',
+    marginBottom: 22,
+  },
+
+  createoneaccount:{
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
+  },
+
+  singinwith:{
+    justifyContent: 'center',
+    alignSelf:'center',
+    fontSize: 24,
+    marginTop: 60,
+  },
+
+  checkbox: {
+    alignSelf: "center",
+    backgroundColor: 'transparent',
+  },
+
+  singintext:{
+    color: 'white',
+    fontSize: 26,
+  },
+
+  facebook:{
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#3b5998',
+    height: 60,
+    borderRadius: 5,
+    margin: 10,
+    color: 'white'
+  },
+
+  singinbtn:{
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'green',
+    height: 60,
+    borderRadius: 5,
+    margin: 10,
+    color: 'white'
+  },
+
  sectionStyle: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
     borderWidth: 0.5,
     borderColor: '#000',
     height: 40,
     borderRadius: 5,
     margin: 10,
   },
+
   imageStyle: {
     padding: 10,
     margin: 5,
@@ -90,5 +169,4 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
     alignItems: 'center',
   },
- 
 });
